@@ -163,7 +163,6 @@ const Container = () => {
 
                 {/* Carte météo 7 */}
 <div className="card-longues">
-    <div className="card3">
         <div className="header">
             <h2>Météo du jour - Paris</h2>
             <p>Mardi 17 Septembre 2024</p>
@@ -187,7 +186,6 @@ const Container = () => {
                 ))}
             </div>
         </div>
-    </div>
 </div>
                 
             </div>
