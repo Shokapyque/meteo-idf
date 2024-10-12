@@ -3,10 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-async function WeatherCity  ({city}) {
+async function WeatherDetails ({city}){
     let data = await getData(city)
     return (
-        <div className="card">
+        <body>
+            <div className="card">
                     <div className="card2">
                         <div className="header">
                             <h2>{city}</h2>
@@ -22,19 +23,17 @@ async function WeatherCity  ({city}) {
                             </div>
                         </div>
                         <div className="footer">
-                            <div className="Humidity">
-                            <p><Image src="/svg/humidity.svg" alt="vent" width={20} height={20} /><span><br/>{data.main.humidity}%</span></p>
-                            </div>
-                            <div className="Wind">
-                            <p><Image src="/svg/wind.svg" alt="vent" width={20} height={20} /><span><br/>{data.wind.speed}km/h</span></p>
-                            </div>
+                            <p>Humidité: <span>{data.main.humidity}%</span></p>
+                            <p>Vent: <span>{data.wind.speed}km/h</span></p>
                         </div>
                         <div className="footer-button-container">
                             <Link href={city} className="footer-button"> Voir la météo de {city}</Link>
                         </div>
                     </div>
                 </div>
+        </body>
+        
     );
-};        
+};
 
-export default WeatherCity;
+export default WeatherDetails;

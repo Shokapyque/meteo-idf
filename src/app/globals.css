@@ -127,6 +127,22 @@ header {
   transition: transform 0.3s ease;
   flex: 1; /* Permet aux cartes de prendre de l'espace disponible */
   min-width: 250px; /* Largeur minimum pour les cartes */
+  max-width: 400px;
+  max-height: 500px;
+}
+
+.card-details {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(220, 219, 219, 0.2);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  flex: 1; /* Permet aux cartes de prendre de l'espace disponible */
+  min-width: 250px; /* Largeur minimum pour les cartes */
+  max-width: 400px;
+  max-height: 500px;
 }
 
 .card-longues {
@@ -251,15 +267,24 @@ header {
   display: flex;
   justify-content: center; /* Center the content */
   align-items: center; /* Center the content vertically */
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.884);
   padding: 10px 15px;
   border-radius: 20px;
   font-size: 16px;
-  color: inherit; /* Inherit color from parent */
+  color: #000000;
   margin-bottom: 10px;
   transition: transform 0.3s ease;
   text-decoration: none; /* Enlève le soulignement */
 }
+
+.footer .humidity p img{
+  justify-content:center;
+  align-items: center;
+}
+.footer .wind p img {
+  justify-content:center;
+  align-items: center;
+} 
 
 .footer-button:focus {
   outline: none;
