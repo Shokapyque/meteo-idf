@@ -1,24 +1,36 @@
+:root {
+  --bg: #000000; /* Couleur de fond */
+  --text: #ffffff; /* Couleur du texte */
+  --header-bg: transparent; /* Couleur de fond de l'en-tête */
+  --search-bg: rgba(255, 255, 255); /* Couleur de fond de la barre de recherche */
+  --button-bg: rgba(19, 19, 19, 0.74); /* Couleur de fond des boutons */
+  --card-bg: rgba(255, 255, 255, 0.2); /* Couleur de fond des cartes */
+  --card-shadow: rgba(220, 219, 219, 0.2); /* Couleur d'ombre des cartes */
+  --footer-bg: rgba(255, 255, 255, 0.1); /* Couleur de fond du footer */
+  --footer-text: #ffffff; /* Couleur du texte du footer */
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-
 body {
   font-family: 'Helvetica Neue', sans-serif;
-  background: linear-gradient(180deg, #FFFFFF, #000000 30%);
+  background-color: var(--bg);
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  color: #ffffff;
+  color: var(--text);
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Style du header */
 header {
-  background-color: transparent;
+  background-color: var(--header-bg);
   padding: 20px 0;
   position: relative;
   width: 100%;
@@ -48,8 +60,7 @@ header {
 }
 
 .page-title {
-  color: #000000;
-  font-style: bold;
+  color: var(--text);
   font-size: 32px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -60,7 +71,7 @@ header {
 .search-bar {
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.712);
+  background-color: var(--search-bg);
   padding: 5px 15px;
   border-radius: 30px;
 }
@@ -69,25 +80,25 @@ header {
   background-color: transparent;
   border: none;
   outline: none;
-  color: #ffffff;
+  color: var(--bg);
   font-size: 14px;
   padding: 10px;
   width: 180px;
 }
 
 .search-bar input::placeholder {
-  color: rgb(255, 255, 255);
+  color: var(--bg);
 }
 
 .search-bar button {
-  background-color: rgba(19, 19, 19, 0.74);
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--text);
   border: none;
   padding: 10px 20px;
   font-size: 14px;
   border-radius: 30px;
-  cursor: pointer;
   transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .search-bar button:hover {
@@ -103,6 +114,7 @@ header {
   flex: 1;
   max-width: 1900px;
   justify-content: center;
+  padding: 20px; /* Padding pour l'espacement */
 }
 
 .row {
@@ -110,68 +122,56 @@ header {
   flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
-  padding: 50px;
+  padding: 50px; /* Padding pour l'espacement */
   margin-top: 20px;
   max-width: 1200px;
-  
 }
 
 /* Cartes */
-.card {
-  background: rgba(255, 255, 255, 0.2);
+.card, .card-details, .card-longues {
+  background: var(--card-bg);
   border-radius: 25px;
-  box-shadow: 0 8px 20px rgba(220, 219, 219, 0.2);
+  box-shadow: 0 10px 20px var(--card-shadow);
   backdrop-filter: blur(10px);
   overflow: hidden;
   padding: 10px;
   transition: transform 0.3s ease;
   flex: 1; /* Permet aux cartes de prendre de l'espace disponible */
   min-width: 250px; /* Largeur minimum pour les cartes */
+  max-width: 400px;
+  max-height: 500px;
 }
 
 .card-longues {
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 20px rgba(220, 219, 219, 0.2);
-  border-radius: 25px;
-  backdrop-filter: blur(10px);
-  overflow: hidden;
-  padding: 10px;
-  transition: transform 0.3s ease;
-  flex: 1;
   min-width: 300px;
   max-width: 600px; /* Largeur maximum pour la carte */
 }
 
 
-.card:hover {
-  transform: scale(1.01);
-}
-
-.card-longues .hourly-forecast {
+.card .hourly-forecast {
   display: flex;
   overflow-x: auto;
   padding: 10px;
   white-space: nowrap;
 }
 
-.card-longues .hourly-forecast::-webkit-scrollbar {
+.card .hourly-forecast::-webkit-scrollbar {
   width: 2px; /* Largeur de la barre de défilement */
   background-color: rgba(220, 219, 219, 0.2); /* Couleur de fond de la barre */
   border-radius: 20px;
-
 }
 
-.card-longues .hourly-forecast::-webkit-scrollbar-thumb {
+.card .hourly-forecast::-webkit-scrollbar-thumb {
   background-color: #fffffff3; /* Couleur du pouce de la barre de défilement */
   border-radius: 20px; /* Arrondi du pouce */
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.card-longues .hourly-forecast::-webkit-scrollbar-thumb:hover {
+.card .hourly-forecast::-webkit-scrollbar-thumb:hover {
   background-color: #ffffffa1; /* Couleur au survol */
 }
 
-.card-longues .hour {
+.card .hour {
   min-width: 80px;
   text-align: center;
   padding: 5px;
@@ -180,9 +180,9 @@ header {
   margin-right: 10px;
 }
 
-.card-longues .hour p {
+.card .hour p {
   margin: 0;
-  font-size: 14px;
+  font-size: 14px; /* Taille de texte ajustée */
 }
 
 /* En-tête et description */
@@ -192,13 +192,13 @@ header {
 }
 
 .header h2 {
-  font-size: 24px;
-  color: #ffffff;
+  font-size: 24px; /* Taille de texte ajustée */
+  color: var(--text);
 }
 
 .header p {
-  font-size: 16px;
-  color: #eeeeee;
+  font-size: 16px; /* Taille de texte ajustée */
+  color: var(--text);
 }
 
 .body {
@@ -209,9 +209,9 @@ header {
 }
 
 .temp {
-  font-size: 58px;
+  font-size: 40px; /* Taille de texte ajustée pour la température */
   font-weight: bold;
-  color: #ffffff;
+  color: var(--text);
 }
 
 .icon img {
@@ -221,51 +221,51 @@ header {
 }
 
 .description p {
-  font-size: 18px;
-  color: #eeeeee;
+  font-size: 18px; /* Taille de texte ajustée pour la description */
+  color: var(--search-bg);
   font-style: italic;
 }
 
-/* Footer */
-.footer {
+/* Footer des cartes */
+.footer-card {
   display: flex;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--footer-bg);
   padding: 10px 15px;
   border-radius: 20px;
-  font-size: 16px;
-  color: #ffffff;
+  font-size: 16px; /* Taille de texte ajustée */
+  color: var(--footer-text);
   margin-bottom: 10px;
 }
 
-.footer p {
+.footer-card p {
   margin-bottom: 0;
 }
 
-.footer span {
+.footer-card span {
   font-weight: bold;
 }
 
-.footer-button {
+.footer-card-button {
   cursor: pointer;
   display: flex;
   justify-content: center; /* Center the content */
   align-items: center; /* Center the content vertically */
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--text);
   padding: 10px 15px;
   border-radius: 20px;
-  font-size: 16px;
-  color: inherit; /* Inherit color from parent */
+  font-size: 16px; /* Taille de texte ajustée */
+  color: var(--bg);
   margin-bottom: 10px;
   transition: transform 0.3s ease;
   text-decoration: none; /* Enlève le soulignement */
 }
 
-.footer-button:focus {
+.footer-card-button:focus {
   outline: none;
 }
 
-.footer-button:hover {
+.footer-card-button:hover {
   transform: scale(1.05); /* Optionnel : effet au survol */
 }
 
@@ -296,68 +296,119 @@ header {
   border-radius: 50%;
 }
 
-footer {
-  background-color: transparent;
-  color: #ffffff;
-  text-align: center;
+/* Footer du site */
+.footer {
   padding: 20px;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.footer p {
+  margin: 0;
   font-size: 14px;
+  color: #3596fd; /* Couleur du texte */
+  justify-content: center;
 }
 
-footer a {
-  color: #ffffff;
-  font-weight: bold;
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  justify-content: center;
 }
 
+.footer li {
+  margin: 0 15px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--footer-text); /* Couleur des liens */
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #0056b3; /* Couleur des liens au survol */
+}
 
 /* Media Queries */
-@media screen and (max-width: 900px) {
-  .row {
-    justify-content: center; /* Centrer les cartes */
-    gap: 20px; /* Réduire l'espacement */
-  }
-}
-
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 596px) {
   .page-title {
-      display: none;
+      display: none; /* Masquer le titre sur petit écran */
   }
 
   .map {
-      display: none;
+      display: none; /* Masquer la carte principale sur petit écran */
   }
 
   .mobile-map {
-      display: block;
+      display: block; /* Afficher la carte mobile sur petit écran */
+      width: 100%; /* Largeur de la carte mobile */
+      height: 300px; /* Hauteur fixe pour la carte mobile */
+      margin: 10px 0; /* Espacement pour la carte mobile */
   }
 
   .row {
-    flex-direction: column; /* Passer en colonne sur petit écran */
-    align-items: center; /* Aligner les cartes au centre */
+      flex-direction: column; /* Aligner les cartes verticalement */
+      padding: 0; /* Retirer le padding horizontal */
+  }
+
+  .card-longues {
+      max-width: 90%; /* Les cartes prennent presque toute la largeur de l'écran */
+      margin: 10px 0; /* Ajout d'un margin pour espacer les cartes */
+  }
+
+  .temp {
+      font-size: 36px; /* Ajusté pour la taille mobile */
+  }
+
+  .icon img {
+      width: 80px; /* Ajusté pour la taille mobile */
+      height: 80px; /* Ajusté pour la taille mobile */
+  }
+
+  .hourly-forecast {
+      flex-direction: row; /* Aligner les heures horizontalement */
+      overflow-x: auto; /* Permettre le défilement horizontal */
+  }
+
+  .hour {
+      min-width: 60px; /* Ajusté pour la taille mobile */
+  }
+
+  .map, .mobile-map {
+      width: 100%; /* Ajusté pour s'adapter à l'écran mobile */
+      height: 400px; /* Hauteur ajustée pour la taille mobile */
+      margin: 10px 0; /* Espacement pour la carte mobile */
   }
 }
 
-
-
-
-
-/* Media Queries */
-@media screen and (max-width: 550px) {
-  .page-title {
-      display: none;
+@media (max-width: 801px) {
+  .card, .card-longues {
+    flex: 1 1 100%; /* Occupent toute la largeur */
+    margin: 10px 0; /* Ajout d'un margin pour espacer les cartes */
   }
 
+  .header h2 {
+    font-size: 20px; /* Ajusté pour la taille mobile */
+  }
+
+  .temp {
+    font-size: 32px; /* Ajusté pour la taille mobile */
+  }
+}
+
+@media screen and (max-width: 800px) {
   .map {
-      display: none;
-  }
-
-  .mobile-map {
-      display: block;
+      display: none; /* Cacher la carte principale pour les petits écrans */
   }
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 801px) {
   .mobile-map {
-      display: none;
+      display: none; /* Cacher la carte mobile pour les grands écrans */
   }
 }
