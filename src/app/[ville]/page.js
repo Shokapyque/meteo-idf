@@ -9,9 +9,11 @@ import Footer from "@/components/Footer";
 async function Pageville  ({params}) {
     let data = await getData(params.ville)
     return <Suspense fallback={<Loading/>}>
+
         <Header/>
         <WeatherCity city={params.ville}/>
         <Footer/>
+         <WeatherCity city={params.ville}/>
     </Suspense>
     
 }
