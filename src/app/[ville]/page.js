@@ -13,7 +13,6 @@ async function Pageville  ({params}) {
         <Header/>
         <WeatherCity city={params.ville}/>
         <Footer/>
-         <WeatherCity city={params.ville}/>
     </Suspense>
     
 }

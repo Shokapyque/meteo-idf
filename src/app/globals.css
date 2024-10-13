@@ -140,8 +140,6 @@ header {
   min-width: 250px; /* Largeur minimum pour les cartes */
   max-width: 400px;
   max-height: 500px;
-
-
 }
 
 .card-details {
@@ -267,22 +265,17 @@ header {
   display: flex;
   justify-content: center; /* Center the content */
   align-items: center; /* Center the content vertically */
-  background-color: var(--text);
-  padding: 10px 15px;
-  border-radius: 20px;
-  font-size: 16px; /* Taille de texte ajustée */
-  color: var(--bg);
   background-color: rgba(255, 255, 255, 0.884);
   padding: 10px 15px;
   border-radius: 20px;
   font-size: 16px;
-  color: #000000;
+  color: var(--bg);
   margin-bottom: 10px;
   transition: transform 0.3s ease;
   text-decoration: none; /* Enlève le soulignement */
 }
 
-.footer-card-button:focus {
+.footer .humidity p img{
   justify-content:center;
   align-items: center;
 }
