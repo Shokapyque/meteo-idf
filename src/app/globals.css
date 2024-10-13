@@ -117,6 +117,14 @@ header {
   padding: 20px; /* Padding pour l'espacement */
 }
 
+.container iframe {
+  border-radius: 50px;
+  width: 70vw;
+  height: 50vh;
+
+}
+
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -292,6 +300,13 @@ header {
   transform: scale(1.05); /* Optionnel : effet au survol */
 }
 
+.iframe-right {
+  width: 40%; /* Ajuste la taille de l'iframe */
+  height: 500px; /* Hauteur de l'iframe */
+  border: none; /* Pour supprimer les bordures de l'iframe */
+  margin-left: 20px; /* Espace entre le contenu et l'iframe */
+}
+
 /* Carte */
 .map {
   width: 550px;
@@ -433,5 +448,13 @@ header {
 @media screen and (min-width: 801px) {
   .mobile-map {
       display: none; /* Cacher la carte mobile pour les grands écrans */
+  }
+}
+
+
+/* Pour les écrans plus petits */
+@media (max-width: 767px) {
+  .iframe-right {
+    display: none;
   }
 }

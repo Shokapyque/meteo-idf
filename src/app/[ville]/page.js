@@ -4,6 +4,8 @@ import { getData } from "../../Utils/Weather";
 import WeatherCity from "@/components/WeatherCity";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Wikipedia from "@/components/Wikipedia";
+import WeatherDetails from "@/components/WeatherDetails";
 
 
 async function Pageville  ({params}) {
@@ -11,7 +13,8 @@ async function Pageville  ({params}) {
     return <Suspense fallback={<Loading/>}>
 
         <Header/>
-        <WeatherCity city={params.ville}/>
+        <WeatherDetails city={params.ville}/>
+        <Wikipedia city={params.ville}/>
         <Footer/>
     </Suspense>
     

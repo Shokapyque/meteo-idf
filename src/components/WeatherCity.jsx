@@ -30,7 +30,7 @@ async function WeatherCity  ({city}) {
                             <p><Image src="/svg/wind.svg" alt="vent" width={20} height={20} /><span><br/>{data.wind.speed}km/h</span></p>
                             </div>
                         </div>
-                            <Link href={city} className="footer-card-button"> Voir la météo de {city}</Link>
+                            <Link href={city} className="footer-card-button"> En savoir plus</Link>
                     </div> 
                 </div>
     );
