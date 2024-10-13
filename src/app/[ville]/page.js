@@ -1,11 +1,10 @@
 import { Suspense } from "react";
 import Loading from "./loading";
 import { getData } from "../../Utils/Weather";
-import WeatherCity from "@/components/WeatherCity";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Wikipedia from "@/components/Wikipedia";
-import WeatherDetails from "@/components/WeatherDetails";
+import WeatherCity from "@/components/WeatherCity";
 
 
 async function Pageville  ({params}) {
@@ -13,7 +12,7 @@ async function Pageville  ({params}) {
     return <Suspense fallback={<Loading/>}>
 
         <Header/>
-        <WeatherDetails city={params.ville}/>
+        <WeatherCity city={params.ville} ishomepage={false}/>
         <Wikipedia city={params.ville}/>
         <Footer/>
     </Suspense>

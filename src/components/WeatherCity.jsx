@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-async function WeatherCity  ({city}) {
+async function WeatherCity  ({city, ishomepage}) {
     let data = await getData(city)
     let icon = data.weather[0].icon
     return (
@@ -30,7 +30,7 @@ async function WeatherCity  ({city}) {
                             <p><Image src="/svg/wind.svg" alt="vent" width={20} height={20} /><span><br/>{data.wind.speed}km/h</span></p>
                             </div>
                         </div>
-                            <Link href={city} className="footer-card-button"> En savoir plus</Link>
+                        {ishomepage ? <Link href={city} className="footer-card-button">En savoir plus</Link> : <Link href={"/"} className="footer-card-button">Revenir à l'accueuil</Link>}
                     </div> 
                 </div>
     );

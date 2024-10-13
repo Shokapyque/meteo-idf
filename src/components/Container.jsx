@@ -8,7 +8,7 @@ function Container() {
         <div className="container">
             <div className="row">
                 {cities.map((city, index) => (
-                    <WeatherCity key={index} city={city} />
+                    <WeatherCity key={index} city={city} ishomepage={true}/>
                 ))}
 
                 {/* Carte météo 7 */}
