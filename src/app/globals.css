@@ -262,10 +262,15 @@ header {
 
 .footer-card p {
   margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
 }
 
 .footer-card span {
   font-weight: bold;
+  line-height: 1px;
 }
 
 .footer-card-button {
@@ -282,15 +287,6 @@ header {
   transition: transform 0.3s ease;
   text-decoration: none; /* Enlève le soulignement */
 }
-
-.footer .humidity p img{
-  justify-content:center;
-  align-items: center;
-}
-.footer .wind p img {
-  justify-content:center;
-  align-items: center;
-} 
 
 .footer-button:focus {
   outline: none;
