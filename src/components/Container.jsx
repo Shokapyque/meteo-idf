@@ -1,7 +1,7 @@
 import Image from "next/image";
 import WeatherCity from "./WeatherCity";
 
-const cities = ["Paris", "Cesson", "Nanterre", "Créteil", "Évry", "Versailles", "Meaux", "Pontoise", "Saint-Denis", "Sarcelles"];
+const cities = ["Paris", "Cesson", "Nanterre", "Créteil", "Évry", "Versailles", "Meaux", "Pontoise", "Saint-Denis", "Sydney"];
 
 function Container() {
     return (
