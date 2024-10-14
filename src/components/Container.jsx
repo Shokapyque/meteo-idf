@@ -1,48 +1,18 @@
 import Image from "next/image";
 import WeatherCity from "./WeatherCity";
 
-const cities = ["Paris", "London", "Berlin", "Tokyo", "Delhi", "Shanghai", "São Paulo", "Mumbai", "Cairo", "Beijing"];
+const cities = ["Paris", "London", "Berlin", "Tokyo", "Las Vegas", "Shanghai", "São Paulo", "Mumbai", "Cairo", "Beijing"];
 
-function Container() {
+function Container({WeatherIcon}) {
+
+
     return (
         <div className="container">
             <div className="row">
                 {cities.map((city, index) => (
-                    <WeatherCity key={index} city={city} ishomepage={true}/>
+                    <WeatherCity key={index} city={city} ishomepage={true} WeatherIcon={WeatherIcon}/>
                 ))}
 
-                {/* Carte météo 7 */}
-                <div className="card">
-                    <div className="header">
-                        <h2>Météo du jour - Paris</h2>
-                        <p>Mardi 17 Septembre 2024</p>
-                    </div>
-                    <div className="body">
-                        <div className="temp">25°C</div>
-                        <div className="icon">
-                            <Image
-                                src={"/svg/Ensoleille.svg"}
-                                alt="Ensoleillé icon"
-                                width={50}
-                                height={50}
-                                loading="lazy" // Lazy load the image
-                            />
-                        </div>
-                        <div className="description">
-                            <p>Ensoleillé</p>
-                        </div>
-                    </div>
-                    <div className="footer-card">
-                        <div className="hourly-forecast">
-                            {Array.from({ length: 24 }, (_, i) => (
-                                <div className="hour" key={i}>
-                                    <p>{String(i).padStart(2, '0')}:00</p>
-                                    <p>{25 - i}°C</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
             </div>
 
             {/* Desktop Map */}
