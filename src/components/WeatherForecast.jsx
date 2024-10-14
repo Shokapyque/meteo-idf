@@ -1,72 +1,59 @@
-import Image from "next/image";
-import React from "react";
-import { Capitalize } from "@/Utils/Capitalize";
-import { getDataForecast } from "@/Utils/Weather";
-import HourForecast from "./HourForecast";
-
-const WeatherForecast = async ({ city, data, WeatherIcon}) => {
-	const formatDate = (timestamp, timezoneOffset) => {
-		const date = new Date((timestamp + timezoneOffset) * 1000);
-		const options = {
-			year: "numeric",
-			month: "long",
-			day: "numeric",
-		};
-		const formattedDate = new Intl.DateTimeFormat("fr-FR", options).format(
-			date
-		);
-		return formattedDate;
-	};
-	let icon = data.weather[0].icon;
-
-	const CountryFlag = async (Flag) => {
-		const response = await fetch(
-			`https://restcountries.com/v3.1/alpha/${Flag}`
-		);
-		const data = await response.json();
-		return data[0].flags.png; // Retourne l'URL du drapeau en format PNG
-	};
-
-	const countryFlagUrl = await CountryFlag(data.sys.country);
+import Image from 'next/image';
+import React from 'react';
+import { notFound } from 'next/navigation'; // Importez notFound pour la redirection
 
 
-	let dataforecast = await getDataForecast(city);
+async function WeatherForecast({city}) {
 
-	return (
-		<div className="card-longues">
-			<div className="header">
-				<h2>Prévision du jour - {city}</h2>
-				<p>
-					{countryFlagUrl && (
-						<img
-							src={countryFlagUrl}
-							alt={`Drapeau de ${data.sys.country}`}
-							width={50}
-							height={30}
-						/>
-					)}
-				</p>
-			</div>
-			<div className="body">
-				<div className="temp">{data.main.temp.toFixed(1)}°C</div>
-				<div className="icon">
-					<Image
-						src={WeatherIcon(data.weather[0].icon)}
-						alt="Icône Ensoleillé"
-						width={50}
-						height={50}
-						loading="lazy" // Lazy loading of image
-					/>
-				</div>
-				<div className="description">
-					<p>{Capitalize(data.weather[0].description)}</p>
-				</div>
-			</div>
-			<div className="footer-card">
-				<HourForecast dataforecast={dataforecast} />
-			</div>
-		</div>
-	);
+    let data;
+    
+    try {
+        data = await getData(city);
+        if (!data || data.cod !== 200) {
+            notFound();
+            return;
+        }
+    } catch (error) {
+        notFound();
+        return;
+    }
+
+    let icon = data.weather[0].icon;
+    return (
+        <div>
+            <div className="card">
+                    <div className="header">
+                        <h2>Météo du jour - Paris</h2>
+                        <p>Mardi 17 Septembre 2024</p>
+                    </div>
+                    <div className="body">
+                        <div className="temp">25°C</div>
+                        <div className="icon">
+                            <Image
+                                src={"/svg/Ensoleille.svg"}
+                                alt="Ensoleillé icon"
+                                width={50}
+                                height={50}
+                                loading="lazy" // Lazy load the image
+                            />
+                        </div>
+                        <div className="description">
+                            <p>Ensoleillé</p>
+                        </div>
+                    </div>
+                    <div className="footer-card">
+                        <div className="hourly-forecast">
+                            {Array.from({ length: 24 }, (_, i) => (
+                                <div className="hour" key={i}>
+                                    <p>{String(i).padStart(2, '0')}:00</p>
+                                    <p>{25 - i}°C</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+        </div>
+    );
 };
 
 export default WeatherForecast;

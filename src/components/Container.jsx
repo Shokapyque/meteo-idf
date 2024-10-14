@@ -1,18 +1,15 @@
 import Image from "next/image";
 import WeatherCity from "./WeatherCity";
 
-const cities = ["Paris", "London", "Berlin", "Tokyo", "Las Vegas", "Shanghai", "São Paulo", "Mumbai", "Cairo", "Beijing"];
+const cities = ["Paris", "London", "Berlin", "Tokyo", "Delhi", "Shanghai", "São Paulo", "Mumbai", "Cairo", "Beijing"];
 
-function Container({WeatherIcon}) {
-
-
+function Container() {
     return (
         <div className="container">
             <div className="row">
                 {cities.map((city, index) => (
-                    <WeatherCity key={index} city={city} ishomepage={true} WeatherIcon={WeatherIcon}/>
+                    <WeatherCity key={index} city={city} ishomepage={true}/>
                 ))}
-
             </div>
 
             {/* Desktop Map */}
