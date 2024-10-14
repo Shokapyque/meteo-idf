@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
@@ -15,8 +16,8 @@ const Header = () => {
     <header>
       <div className="header-container">
         <div className="logo-section">
-          <Image src={"/img/favicon.png"} alt="Logo" width={50} height={50} />
-          <h1 className="page-title">Météo-IDF</h1>
+          <Link href="/"> <Image src={"/img/favicon.png"} alt="Logo" width={50} height={50} /></Link> 
+          <h1 className="page-title" href="/">Météo-IDF</h1>
         </div>
 
           <form className="search-bar" onSubmit={onSubmit}>

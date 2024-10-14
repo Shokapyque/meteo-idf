@@ -157,19 +157,6 @@ header {
   height: 100%;
 }
 
-.card-details {
-	background: rgba(255, 255, 255, 0.2);
-	border-radius: 25px;
-	box-shadow: 0 8px 20px rgba(220, 219, 219, 0.2);
-	backdrop-filter: blur(10px);
-	overflow: hidden;
-	padding: 10px;
-	transition: transform 0.3s ease;
-	flex: 1; /* Permet aux cartes de prendre de l'espace disponible */
-	min-width: 250px; /* Largeur minimum pour les cartes */
-	max-width: 400px;
-	max-height: 500px;
-}
 
 .card-longues {
 	background: var(--card-bg);
@@ -183,11 +170,21 @@ header {
 	min-width: 250px; /* Largeur minimum pour les cartes */
 	max-width: 90%;
 	height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 50px;
+
+  display: flex;
+	gap: 20px; 
+  align-items: center; 
+  width: 55%;
+  max-height: 500px;
+  
 }
 
 .card-longues img {
-  width: 100%;
-  height: 200px;
+  scale: 1.5;
   object-fit: cover;
   border-radius: 25px 25px 0 0;
 
@@ -196,9 +193,10 @@ header {
 
 .card-longues .hourly-forecast {
 	display: flex;
-	overflow-x: auto;
+	overflow-x: scroll;
 	padding: 10px;
 	white-space: nowrap;
+  width: 100%;
 }
 
 .card-longues .hourly-forecast::-webkit-scrollbar {
@@ -230,6 +228,7 @@ header {
 	margin: 0;
 	font-size: 14px; /* Taille de texte ajustée */
 }
+
 
 /* En-tête et description */
 .header {
@@ -279,6 +278,7 @@ header {
 	font-size: 16px; /* Taille de texte ajustée */
 	color: var(--footer-text);
 	margin-bottom: 10px;
+  width: 100%;
 }
 
 .footer-card p {
@@ -321,16 +321,9 @@ header {
 	height: 500px; /* Hauteur de l'iframe */
 	border: none; /* Pour supprimer les bordures de l'iframe */
 	margin-left: 20px; /* Espace entre le contenu et l'iframe */
+  box-shadow: 0 10px 20px var(--card-shadow);
 }
 
-.WeatherDetails {
-	margin-top: 50px;
-	display: flex;
-	gap: 20px; 
-  align-items: center; 
-  width: 55%;
-  height: 500px;
-}
 
 /* Carte */
 .map {
@@ -343,6 +336,7 @@ header {
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
+  
 }
 
 .mobile-map {

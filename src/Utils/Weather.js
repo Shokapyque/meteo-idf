@@ -45,7 +45,7 @@ async function getWeather(lat, lon) {
 
 async function getWeatherForecast(lat, lon) {
     try {
-        let res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=fr&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}&units=metric`);
+        let res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=16&lang=fr&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}&units=metric`);
 
         if (!res.ok) {
             throw new Error("Erreur : " + res.status);

@@ -1,54 +1,72 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
+import { Capitalize } from "@/Utils/Capitalize";
+import { getDataForecast } from "@/Utils/Weather";
+import HourForecast from "./HourForecast";
 
-const WeatherForecast = ({city, data, WeatherIcon}) => {
+const WeatherForecast = async ({ city, data, WeatherIcon}) => {
+	const formatDate = (timestamp, timezoneOffset) => {
+		const date = new Date((timestamp + timezoneOffset) * 1000);
+		const options = {
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+		};
+		const formattedDate = new Intl.DateTimeFormat("fr-FR", options).format(
+			date
+		);
+		return formattedDate;
+	};
+	let icon = data.weather[0].icon;
 
-    const formatDate = (timestamp, timezoneOffset) => {
-        const date = new Date((timestamp + timezoneOffset) * 1000);
-        const options = {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
+	const CountryFlag = async (Flag) => {
+		const response = await fetch(
+			`https://restcountries.com/v3.1/alpha/${Flag}`
+		);
+		const data = await response.json();
+		return data[0].flags.png; // Retourne l'URL du drapeau en format PNG
+	};
 
-        };
-        const formattedDate = new Intl.DateTimeFormat('fr-FR', options).format(date);
-        return formattedDate;
-    }
+	const countryFlagUrl = await CountryFlag(data.sys.country);
 
 
-    return (
-            <div className="card-longues">
-					<div className="header">
-						<h2>Prévisions du jours - {city}</h2>
-						<p>{formatDate(data.dt, data.timezone)}</p>
-					</div>
-					<div className="body">
-						<div className="temp">25°C</div>
-						<div className="icon">
-							<Image
-								src={WeatherIcon(data.weather[0].icon)}
-								alt="Icône Ensoleillé"
-								width={50}
-								height={50}
-								loading="lazy" // Chargement différé de l'image
-							/>
-						</div>
-						<div className="description">
-							<p>Ensoleillé</p>
-						</div>
-					</div>
-					<div className="footer-card">
-						<div className="hourly-forecast">
-							{Array.from({ length: 24 }, (_, i) => (
-								<div className="hour" key={i}>
-									<p>{String(i).padStart(2, "0")}:00</p>
-									<p>{25 - i}°C</p>
-								</div>
-							))}
-						</div>
-					</div>
+	let dataforecast = await getDataForecast(city);
+
+	return (
+		<div className="card-longues">
+			<div className="header">
+				<h2>Prévision du jour - {city}</h2>
+				<p>
+					{countryFlagUrl && (
+						<img
+							src={countryFlagUrl}
+							alt={`Drapeau de ${data.sys.country}`}
+							width={50}
+							height={30}
+						/>
+					)}
+				</p>
+			</div>
+			<div className="body">
+				<div className="temp">{data.main.temp.toFixed(1)}°C</div>
+				<div className="icon">
+					<Image
+						src={WeatherIcon(data.weather[0].icon)}
+						alt="Icône Ensoleillé"
+						width={50}
+						height={50}
+						loading="lazy" // Lazy loading of image
+					/>
 				</div>
-    );
+				<div className="description">
+					<p>{Capitalize(data.weather[0].description)}</p>
+				</div>
+			</div>
+			<div className="footer-card">
+				<HourForecast dataforecast={dataforecast} />
+			</div>
+		</div>
+	);
 };
 
 export default WeatherForecast;

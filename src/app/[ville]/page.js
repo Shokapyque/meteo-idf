@@ -66,10 +66,7 @@ async function Pageville  ({params}) {
     return <Suspense fallback={<Loading/>}>
 
         <Header/>
-        <div className="WeatherDetails">
-        <WeatherCity city={city} ishomepage={false} WeatherIcon={WeatherIcon}/>
         <WeatherForecast city={city} data={data} WeatherIcon={WeatherIcon}/>
-        </div>
         <Wikipedia city={city}/>
         <Footer/>
     </Suspense>

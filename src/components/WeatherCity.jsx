@@ -48,7 +48,7 @@ async function WeatherCity({ city, ishomepage, WeatherIcon}) {
 						</p>
 					</div>
 					<div className="body">
-						<div className="temp">{data.main.temp.toFixed(1)}°</div>
+						<div className="temp">{data.main.temp.toFixed(1)}°C</div>
 						<div className="icon">
 							<Image
 								src={WeatherIcon(data.weather[0].icon)}
