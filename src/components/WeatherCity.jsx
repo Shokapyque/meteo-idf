@@ -95,5 +95,5 @@ function WeatherIcon (svg) {
 			</div>
 	);
 }
-
+}}
 export default WeatherCity;
