@@ -1,36 +1,35 @@
-'use client'
 import { getData } from "@/Utils/Weather";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { notFound, useRouter } from "next/navigation"; // Importez notFound pour la redirection
+import { notFound } from "next/navigation"; // Importez notFound pour la redirection
 import { Capitalize } from "@/Utils/Capitalize";
-import WeatherIcon from "@/Utils/svg";
 
-async function WeatherCity({ city, ishomepage}) {
-	const router = useRouter();
+async function WeatherCity({ city, ishomepage, WeatherIcon}) {
 	let data;
 
-    let icon = data.weather[0].icon;
+	try {
+		data = await getData(city);
+		if (!data || data.cod !== 200) {
+			notFound();
+			return;
+		}
+	} catch (error) {
+		notFound();
+		return;
+	}
 
-    const formatDate = (timestamp, timezoneOffset) => {
-        const date = new Date((timestamp + timezoneOffset) * 1000);
-        const options = {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-        };
-        const formattedDate = new Intl.DateTimeFormat('fr-FR', options).format(date);
-        return formattedDate;
-    };
+	let icon = data.weather[0].icon;
 
-function WeatherIcon (svg) {
+	const CountryFlag = async (Flag) => {
+		const response = await fetch(
+			`https://restcountries.com/v3.1/alpha/${Flag}`
+		);
+		const data = await response.json();
+		return data[0].flags.png; // Retourne l'URL du drapeau en format PNG
+	};
 
-    switch (svg) {
-        case "01d" : // Clear
-            return "/svg/clear-day.svg"
-        case "01n" :
-            return "/svg/clear-night.svg"
+	const countryFlagUrl = await CountryFlag(data.sys.country);
 
 	return (
 			<div className="card">
@@ -49,6 +48,7 @@ function WeatherIcon (svg) {
 						</p>
 					</div>
 					<div className="body">
+						<div className="temp">{data.main.temp.toFixed(1)}°</div>
 						<div className="temp">{data.main.temp.toFixed(1)}°C</div>
 						<div className="icon">
 							<Image
@@ -88,12 +88,18 @@ function WeatherIcon (svg) {
 							</p>
 						</div>
 					</div>
+					{ishomepage ? (
 						<Link href={city} className="footer-card-button">
 							En savoir plus
 						</Link>
+					) : (
+						<Link href={"/"} className="footer-card-button">
+							Revenir à l'accueuil
+						</Link>
+					)}
 				</div>
 			</div>
 	);
 }
-}}
+
 export default WeatherCity;
