@@ -1,10 +1,12 @@
 import React from 'react';
 
-const HourForecast = ({ dataforecast }) => {
+const HourForecast = async ({ dataforecast }) => {
+    // Vérifiez si dataforecast est valide et contient une liste
+
     return (
         <div className="hourly-forecast">
             {dataforecast.list.map((hour, index) => {
-                let time=hour.dt_txt.split(" ")[1].split(":")[0];
+                const time = hour.dt_txt.split(" ")[1].split(":")[0]; // Extraire l'heure
                 return (
                     <div key={index} className="hour">
                         <p>{time}:00</p>

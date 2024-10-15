@@ -1,10 +1,15 @@
+'use client'
 import Image from "next/image";
 import React from "react";
 import { Capitalize } from "@/Utils/Capitalize";
 import { getDataForecast } from "@/Utils/Weather";
 import HourForecast from "./HourForecast";
+import { useRouter } from "next/navigation";
+import WeatherIcon from "@/Utils/svg";
 
-const WeatherForecast = async ({ city, data, WeatherIcon}) => {
+const WeatherForecast = async ({ city, data }) => {
+	const router = useRouter();
+
 	const formatDate = (timestamp, timezoneOffset) => {
 		const date = new Date((timestamp + timezoneOffset) * 1000);
 		const options = {
@@ -26,10 +31,20 @@ const WeatherForecast = async ({ city, data, WeatherIcon}) => {
 		return data[0].flags.png; // Retourne l'URL du drapeau en format PNG
 	};
 
+	let dataforecast;
+	try {
+		dataforecast = await getDataForecast(city);
+		if (!dataforecast || dataforecast.cod !== 200) {
+			router.push("/notfound");
+			return;
+		}
+	} catch (error) {
+		router.push("/notfound");
+		return;
+	}
+	let icon = data.weather[0].icon;
+
 	const countryFlagUrl = await CountryFlag(data.sys.country);
-
-
-	let dataforecast = await getDataForecast(city);
 
 	return (
 		<div className="card-longues">

@@ -1,11 +1,14 @@
+'use client'
 import { getData } from "@/Utils/Weather";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { notFound } from "next/navigation"; // Importez notFound pour la redirection
+import { notFound, useRouter } from "next/navigation"; // Importez notFound pour la redirection
 import { Capitalize } from "@/Utils/Capitalize";
+import WeatherIcon from "@/Utils/svg";
 
-async function WeatherCity({ city, ishomepage, WeatherIcon}) {
+async function WeatherCity({ city, ishomepage}) {
+	const router = useRouter();
 	let data;
 
 	try {
@@ -87,15 +90,9 @@ async function WeatherCity({ city, ishomepage, WeatherIcon}) {
 							</p>
 						</div>
 					</div>
-					{ishomepage ? (
 						<Link href={city} className="footer-card-button">
 							En savoir plus
 						</Link>
-					) : (
-						<Link href={"/"} className="footer-card-button">
-							Revenir à l'accueuil
-						</Link>
-					)}
 				</div>
 			</div>
 	);
