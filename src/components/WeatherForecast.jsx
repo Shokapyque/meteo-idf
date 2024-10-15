@@ -17,7 +17,6 @@ const WeatherForecast = async ({ city, data, WeatherIcon}) => {
 		);
 		return formattedDate;
 	};
-	let icon = data.weather[0].icon;
 
 	const CountryFlag = async (Flag) => {
 		const response = await fetch(
