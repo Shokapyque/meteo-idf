@@ -1,480 +1,456 @@
 :root {
-	--bg: #000000; /* Couleur de fond */
-	--text: #ffffff; /* Couleur du texte */
-	--header-bg: transparent; /* Couleur de fond de l'en-tête */
-	--search-bg: rgba(
-		255,
-		255,
-		255
-	); /* Couleur de fond de la barre de recherche */
-	--button-bg: rgba(19, 19, 19, 0.74); /* Couleur de fond des boutons */
-	--card-bg: rgba(255, 255, 255, 0.2); /* Couleur de fond des cartes */
-	--card-shadow: rgba(220, 219, 219, 0.2); /* Couleur d'ombre des cartes */
-	--footer-bg: rgba(255, 255, 255, 0.1); /* Couleur de fond du footer */
-	--footer-text: #ffffff; /* Couleur du texte du footer */
+  --bg: #000000; /* Couleur de fond */
+  --text: #ffffff; /* Couleur du texte */
+  --header-bg: transparent; /* Couleur de fond de l'en-tête */
+  --search-bg: rgba(255, 255, 255); /* Couleur de fond de la barre de recherche */
+  --button-bg: rgba(19, 19, 19, 0.74); /* Couleur de fond des boutons */
+  --card-bg: rgba(255, 255, 255, 0.2); /* Couleur de fond des cartes */
+  --card-shadow: rgba(220, 219, 219, 0.2); /* Couleur d'ombre des cartes */
+  --footer-bg: rgba(255, 255, 255, 0.1); /* Couleur de fond du footer */
+  --footer-text: #ffffff; /* Couleur du texte du footer */
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-	font-family: "Helvetica Neue", sans-serif;
-	background-color: var(--bg);
-	background-repeat: no-repeat;
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	color: var(--text);
-	justify-content: space-between;
-	align-items: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: var(--bg);
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--text);
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Style du header */
 header {
-	background-color: var(--header-bg);
-	padding: 20px 0;
-	position: relative;
-	width: 100%;
+  background-color: var(--header-bg);
+  padding: 20px 0;
+  position: relative;
+  width: 100%;
 }
 
 .header-container {
-	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
 .logo-section {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-	width: 50px;
-	height: 50px;
-	margin-right: 15px;
-	border-radius: 50%;
-	background-color: rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .page-title {
-	color: var(--text);
-	font-size: 32px;
-	font-weight: 500;
-	letter-spacing: 1px;
-	margin-left: 20px;
+  color: var(--text);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-left: 20px;
 }
 
 /* Barre de recherche */
 .search-bar {
-	display: flex;
-	align-items: center;
-	background-color: var(--search-bg);
-	padding: 5px 15px;
-	border-radius: 30px;
-  flex-shrink: 1;
-  min-width: none;
+  display: flex;
+  align-items: center;
+  background-color: var(--search-bg);
+  padding: 5px 15px;
+  border-radius: 30px;
 }
 
 .search-bar input {
-	background-color: transparent;
-	border: none;
-	outline: none;
-	color: var(--bg);
-	font-size: 14px;
-	padding: 10px;
-	max-width: 180px;  
-  width: 100%
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--bg);
+  font-size: 14px;
+  padding: 10px;
+  width: 180px;
 }
 
 .search-bar input::placeholder {
-	color: var(--bg);
+  color: var(--bg);
 }
 
 .search-bar button {
-	background-color: var(--bg);
-	color: var(--text);
-	border: none;
-	padding: 10px 20px;
-	font-size: 14px;
-	border-radius: 30px;
-	transition: background-color 0.3s ease;
-	cursor: pointer;
+  background-color: var(--bg);
+  color: var(--text);
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .search-bar button:hover {
-	background-color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
 }
 
 /* Page principale */
 .container {
-	margin: 0 auto;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	flex: 1;
-	max-width: 1900px;
-	justify-content: center;
-	padding: 20px; /* Padding pour l'espacement */
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1;
+  max-width: 1900px;
+  justify-content: center;
+  padding: 20px; /* Padding pour l'espacement */
 }
 
 .container iframe {
-	border-radius: 50px;
-	width: 70vw;
-	height: 50vh;
+  border-radius: 50px;
+  width: 70vw;
+  height: 50vh;
+
 }
 
+
 .row {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 25px;
-	padding: 50px; /* Padding pour l'espacement */
-	margin-top: 20px;
-	max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 50px; /* Padding pour l'espacement */
+  margin-top: 20px;
+  max-width: 1200px;
 }
 
 /* Cartes */
-.card,
-.card-details {
-	background: var(--card-bg);
-	border-radius: 25px;
-	box-shadow: 0 10px 20px var(--card-shadow);
-	backdrop-filter: blur(10px);
-	overflow: hidden;
-	padding: 10px;
-	transition: transform 0.3s ease;
-	flex: 1; /* Permet aux cartes de prendre de l'espace disponible */
-	min-width: 250px; /* Largeur minimum pour les cartes */
-	max-width: 400px;
-	max-height: 500px;
-  height: 100%;
+.card, .card-details, .card-longues {
+  background: var(--card-bg);
+  border-radius: 25px;
+  box-shadow: 0 10px 20px var(--card-shadow);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  flex: 1; /* Permet aux cartes de prendre de l'espace disponible */
+  min-width: 250px; /* Largeur minimum pour les cartes */
+  max-width: 400px;
+  max-height: 500px;
 }
 
+.card-details {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(220, 219, 219, 0.2);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  flex: 1; /* Permet aux cartes de prendre de l'espace disponible */
+  min-width: 250px; /* Largeur minimum pour les cartes */
+  max-width: 400px;
+  max-height: 500px;
+}
 
 .card-longues {
-	background: var(--card-bg);
-	border-radius: 25px;
-	box-shadow: 0 10px 20px var(--card-shadow);
-	backdrop-filter: blur(10px);
-	overflow: hidden;
-	padding: 10px;
-	transition: transform 0.3s ease;
-	flex: 1; /* Permet aux cartes de prendre de l'espace disponible */
-	min-width: 250px; /* Largeur minimum pour les cartes */
-	max-width: 90%;
-	height: 100%;
+  min-width: 300px;
+  max-width: 600px; /* Largeur maximum pour la carte */
+}
+
+
+.card .hourly-forecast {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-top: 50px;
-
-  display: flex;
-	gap: 20px; 
-  align-items: center; 
-  width: 55%;
-  max-height: 500px;
-  
+  overflow-x: auto;
+  padding: 10px;
+  white-space: nowrap;
 }
 
-.card-longues img {
-  scale: 1.5;
-  object-fit: cover;
-  border-radius: 25px 25px 0 0;
-
+.card .hourly-forecast::-webkit-scrollbar {
+  width: 2px; /* Largeur de la barre de défilement */
+  background-color: rgba(220, 219, 219, 0.2); /* Couleur de fond de la barre */
+  border-radius: 20px;
 }
 
-
-.card-longues .hourly-forecast {
-	display: flex;
-	overflow-x: scroll;
-	padding: 10px;
-	white-space: nowrap;
-  width: 100%;
+.card .hourly-forecast::-webkit-scrollbar-thumb {
+  background-color: #fffffff3; /* Couleur du pouce de la barre de défilement */
+  border-radius: 20px; /* Arrondi du pouce */
+  cursor: pointer;
 }
 
-.card-longues .hourly-forecast::-webkit-scrollbar {
-	width: 2px; /* Largeur de la barre de défilement */
-	background-color: rgba(220, 219, 219, 0.2); /* Couleur de fond de la barre */
-	border-radius: 20px;
+.card .hourly-forecast::-webkit-scrollbar-thumb:hover {
+  background-color: #ffffffa1; /* Couleur au survol */
 }
 
-.card-longues .hourly-forecast::-webkit-scrollbar-thumb {
-	background-color: #fffffff3; /* Couleur du pouce de la barre de défilement */
-	border-radius: 20px; /* Arrondi du pouce */
-	cursor: pointer;
+.card .hour {
+  min-width: 80px;
+  text-align: center;
+  padding: 5px;
+  background: #3f3f3f;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
-.card-longues .hourly-forecast::-webkit-scrollbar-thumb:hover {
-	background-color: #ffffffa1; /* Couleur au survol */
+.card .hour p {
+  margin: 0;
+  font-size: 14px; /* Taille de texte ajustée */
 }
-
-.card-longues .hour {
-	min-width: 80px;
-	text-align: center;
-	padding: 5px;
-	background: #3f3f3f;
-	border-radius: 5px;
-	margin-right: 10px;
-}
-
-.card-longues .hour p {
-	margin: 0;
-	font-size: 14px; /* Taille de texte ajustée */
-}
-
 
 /* En-tête et description */
 .header {
-	text-align: center;
-}
-.header img {
-	border-radius: 10%;
-	margin: 10px 0;
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 .header h2 {
-	font-size: 24px; /* Taille de texte ajustée */
-	color: var(--text);
+  font-size: 24px; /* Taille de texte ajustée */
+  color: var(--text);
 }
 
 .header p {
-	font-size: 16px; /* Taille de texte ajustée */
-	color: var(--text);
+  font-size: 16px; /* Taille de texte ajustée */
+  color: var(--text);
 }
 
 .body {
-	padding: 10px 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .temp {
-	font-size: 40px; /* Taille de texte ajustée pour la température */
-	font-weight: bold;
-	color: var(--text);
+  font-size: 40px; /* Taille de texte ajustée pour la température */
+  font-weight: bold;
+  color: var(--text);
+}
+
+.icon img {
+  width: 120px;
+  height: 120px;
+  margin: 10px 0;
 }
 
 .description p {
-	font-size: 18px; /* Taille de texte ajustée pour la description */
-	color: var(--search-bg);
-	font-style: italic;
+  font-size: 18px; /* Taille de texte ajustée pour la description */
+  color: var(--search-bg);
+  font-style: italic;
 }
 
 /* Footer des cartes */
 .footer-card {
-	display: flex;
-	justify-content: space-between;
-	background-color: var(--footer-bg);
-	padding: 10px 15px;
-	border-radius: 20px;
-	font-size: 16px; /* Taille de texte ajustée */
-	color: var(--footer-text);
-	margin-bottom: 10px;
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--footer-bg);
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 16px; /* Taille de texte ajustée */
+  color: var(--footer-text);
+  margin-bottom: 10px;
 }
 
 .footer-card p {
-	margin-bottom: 0;
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
-
-.footer-card span {
-	font-weight: bold;
-	line-height: 1px;
-}
-
-.footer-card-button {
-	cursor: pointer;
-	display: flex;
-	justify-content: center; /* Center the content */
-	align-items: center; /* Center the content vertically */
-	background-color: var(--text);
-	padding: 10px 15px;
-	border-radius: 20px;
-	font-size: 16px;
-	color: var(--bg);
-	margin-bottom: 10px;
-	transition: transform 0.3s ease;
-	text-decoration: none; /* Enlève le soulignement */
-}
-
-.footer-button:focus {
-	outline: none;
-}
-
-.footer-card-button:hover {
-	transform: scale(1.05); /* Optionnel : effet au survol */
-}
-
-.iframe-right {
-	width: 40%; /* Ajuste la taille de l'iframe */
-	height: 500px; /* Hauteur de l'iframe */
-	border: none; /* Pour supprimer les bordures de l'iframe */
-	margin-left: 20px; /* Espace entre le contenu et l'iframe */
-  box-shadow: 0 10px 20px var(--card-shadow);
-}
-
-
-/* Carte */
-.map {
-	width: 550px;
-	height: 550px;
-}
-
-.map iframe {
-	display: flex;
-	width: 100%;
-	height: 100%;
-	border-radius: 50%;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   
 }
 
+.footer-card span {
+  font-weight: bold;
+  line-height: 1px;
+}
+
+.footer-card-button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center; /* Center the content */
+  align-items: center; /* Center the content vertically */
+  background-color: rgba(255, 255, 255, 0.884);
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 16px;
+  color: var(--bg);
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+  text-decoration: none; /* Enlève le soulignement */
+}
+
+.footer-button:focus {
+  outline: none;
+}
+
+.footer-card-button:hover {
+  transform: scale(1.05); /* Optionnel : effet au survol */
+}
+
+.iframe-right {
+  width: 40%; /* Ajuste la taille de l'iframe */
+  height: 500px; /* Hauteur de l'iframe */
+  border: none; /* Pour supprimer les bordures de l'iframe */
+  margin-left: 20px; /* Espace entre le contenu et l'iframe */
+}
+
+/* Carte */
+.map {
+  width: 550px;
+  height: 550px;
+}
+
+.map iframe {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
 .mobile-map {
-	padding: 0;
-	margin: 0;
-	width: 800px;
-	height: 800px;
+  padding: 0;
+  margin: 0;
+  width: 800px;
+  height: 800px;
 }
 
 .mobile-map iframe {
-	display: flex;
-	width: 100%;
-	height: 100%;
-	border-radius: 50%;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 /* Footer du site */
 .footer {
-	padding: 20px;
-	text-align: center;
-	bottom: 0;
-	width: 100%;
-	justify-content: center;
+  padding: 20px;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
 }
 
 .footer p {
-	margin: 0;
-	font-size: 14px;
-	color: #3596fd; /* Couleur du texte */
-	justify-content: center;
+  margin: 0;
+  font-size: 14px;
+  color: #3596fd; /* Couleur du texte */
+  justify-content: center;
 }
 
 .footer ul {
-	list-style: none;
-	padding: 0;
-	margin: 10px 0 0;
-	display: flex;
-	justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  justify-content: center;
 }
 
 .footer li {
-	margin: 0 15px;
+  margin: 0 15px;
 }
 
 .footer a {
-	text-decoration: none;
-	color: var(--footer-text); /* Couleur des liens */
-	transition: color 0.3s;
+  text-decoration: none;
+  color: var(--footer-text); /* Couleur des liens */
+  transition: color 0.3s;
 }
 
 .footer a:hover {
-	color: #0056b3; /* Couleur des liens au survol */
+  color: #0056b3; /* Couleur des liens au survol */
 }
 
 /* Media Queries */
 @media screen and (max-width: 596px) {
-	.page-title {
-		display: none; /* Masquer le titre sur petit écran */
-	}
+  .page-title {
+      display: none; /* Masquer le titre sur petit écran */
+  }
 
-	.map {
-		display: none; /* Masquer la carte principale sur petit écran */
-	}
+  .map {
+      display: none; /* Masquer la carte principale sur petit écran */
+  }
 
-	.mobile-map {
-		display: block; /* Afficher la carte mobile sur petit écran */
-		width: 100%; /* Largeur de la carte mobile */
-		height: 300px; /* Hauteur fixe pour la carte mobile */
-		margin: 10px 0; /* Espacement pour la carte mobile */
-	}
+  .mobile-map {
+      display: block; /* Afficher la carte mobile sur petit écran */
+      width: 100%; /* Largeur de la carte mobile */
+      height: 300px; /* Hauteur fixe pour la carte mobile */
+      margin: 10px 0; /* Espacement pour la carte mobile */
+  }
 
-	.row {
-		flex-direction: column; /* Aligner les cartes verticalement */
-		padding: 0; /* Retirer le padding horizontal */
-	}
+  .row {
+      flex-direction: column; /* Aligner les cartes verticalement */
+      padding: 0; /* Retirer le padding horizontal */
+  }
 
-	.card-longues {
-		max-width: 90%; /* Les cartes prennent presque toute la largeur de l'écran */
-		margin: 10px 0; /* Ajout d'un margin pour espacer les cartes */
-	}
+  .card-longues {
+      max-width: 90%; /* Les cartes prennent presque toute la largeur de l'écran */
+      margin: 10px 0; /* Ajout d'un margin pour espacer les cartes */
+  }
 
-	.temp {
-		font-size: 36px; /* Ajusté pour la taille mobile */
-	}
+  .temp {
+      font-size: 36px; /* Ajusté pour la taille mobile */
+  }
 
-	.icon img {
-		width: 80px; /* Ajusté pour la taille mobile */
-		height: 80px; /* Ajusté pour la taille mobile */
-	}
+  .icon img {
+      width: 80px; /* Ajusté pour la taille mobile */
+      height: 80px; /* Ajusté pour la taille mobile */
+  }
 
-	.hourly-forecast {
-		flex-direction: row; /* Aligner les heures horizontalement */
-		overflow-x: auto; /* Permettre le défilement horizontal */
-	}
+  .hourly-forecast {
+      flex-direction: row; /* Aligner les heures horizontalement */
+      overflow-x: auto; /* Permettre le défilement horizontal */
+  }
 
-	.hour {
-		min-width: 60px; /* Ajusté pour la taille mobile */
-	}
+  .hour {
+      min-width: 60px; /* Ajusté pour la taille mobile */
+  }
 
-	.map,
-	.mobile-map {
-		width: 100%; /* Ajusté pour s'adapter à l'écran mobile */
-		height: 400px; /* Hauteur ajustée pour la taille mobile */
-		margin: 10px 0; /* Espacement pour la carte mobile */
-	}
+  .map, .mobile-map {
+      width: 100%; /* Ajusté pour s'adapter à l'écran mobile */
+      height: 400px; /* Hauteur ajustée pour la taille mobile */
+      margin: 10px 0; /* Espacement pour la carte mobile */
+  }
 }
 
 @media (max-width: 801px) {
-	.card,
-	.card-longues {
-		flex: 1 1 100%; /* Occupent toute la largeur */
-		margin: 10px 0; /* Ajout d'un margin pour espacer les cartes */
-	}
+  .card, .card-longues {
+    flex: 1 1 100%; /* Occupent toute la largeur */
+    margin: 10px 0; /* Ajout d'un margin pour espacer les cartes */
+  }
 
-	.header h2 {
-		font-size: 20px; /* Ajusté pour la taille mobile */
-	}
+  .header h2 {
+    font-size: 20px; /* Ajusté pour la taille mobile */
+  }
 
-	.temp {
-		font-size: 32px; /* Ajusté pour la taille mobile */
-	}
+  .temp {
+    font-size: 32px; /* Ajusté pour la taille mobile */
+  }
 }
 
 @media screen and (max-width: 800px) {
-	.map {
-		display: none; /* Cacher la carte principale pour les petits écrans */
-	}
+  .map {
+      display: none; /* Cacher la carte principale pour les petits écrans */
+  }
 }
 
 @media screen and (min-width: 801px) {
-	.mobile-map {
-		display: none; /* Cacher la carte mobile pour les grands écrans */
-	}
+  .mobile-map {
+      display: none; /* Cacher la carte mobile pour les grands écrans */
+  }
 }
+
 
 /* Pour les écrans plus petits */
 @media (max-width: 767px) {
-	.iframe-right {
-		display: none;
-	}
+  .iframe-right {
+    display: none;
+  }
 }
